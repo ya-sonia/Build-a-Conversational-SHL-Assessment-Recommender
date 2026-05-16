@@ -80,7 +80,7 @@ python -m unittest tests/test_app.py -v
 ```
 
 
-## Deployment (Render / Railway / Fly)
+## Deployment 
 
 1. Get a free Groq API key at [console.groq.com](https://console.groq.com)
 2. Push this repo to GitHub
