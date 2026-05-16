@@ -1,0 +1,100 @@
+@baseUrl = http://192.168.29.22:8000
+@contentType = application/json
+
+### Health Check
+GET {{baseUrl}}/health
+Accept: application/json
+
+### Basic Chat Request
+POST {{baseUrl}}/chat
+Content-Type: {{contentType}}
+
+{
+  "messages": [
+    {
+      "role": "user",
+      "content": "Hiring a Java developer, mid-level"
+    }
+  ]
+}
+
+### Multi-turn Conversation
+POST {{baseUrl}}/chat
+Content-Type: {{contentType}}
+
+{
+  "messages": [
+    {
+      "role": "user",
+      "content": "Hiring a Java developer who works with stakeholders"
+    },
+    {
+      "role": "assistant",
+      "content": "What seniority level are you hiring for?"
+    },
+    {
+      "role": "user",
+      "content": "Mid-level, around 4 years experience"
+    }
+  ]
+}
+
+### Frontend Engineer Request
+POST {{baseUrl}}/chat
+Content-Type: {{contentType}}
+
+{
+  "messages": [
+    {
+      "role": "user",
+      "content": "Looking for assessments for a frontend React developer"
+    }
+  ]
+}
+
+### Leadership Role Request
+POST {{baseUrl}}/chat
+Content-Type: {{contentType}}
+
+{
+  "messages": [
+    {
+      "role": "user",
+      "content": "Hiring a senior engineering manager with strong leadership and stakeholder management skills"
+    }
+  ]
+}
+
+### Invalid Request - Empty Messages (Expected 422)
+POST {{baseUrl}}/chat
+Content-Type: {{contentType}}
+
+{
+  "messages": []
+}
+
+### Invalid Request - Role Order (Expected 422)
+POST {{baseUrl}}/chat
+Content-Type: {{contentType}}
+
+{
+  "messages": [
+    {
+      "role": "assistant",
+      "content": "Hello"
+    }
+  ]
+}
+
+### Invalid Request - Blank Content (Expected 422)
+POST {{baseUrl}}/chat
+Content-Type: {{contentType}}
+
+{
+  "messages": [
+    {
+      "role": "user",
+      "content": ""
+    }
+  ]
+}
